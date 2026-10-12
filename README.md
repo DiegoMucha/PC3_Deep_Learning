@@ -88,11 +88,13 @@ deforma la relación de aspecto. No se estiman estadísticas usando test.
 
 | Familia | Variantes | Optimizador | LR | Épocas |
 | --- | --- | --- | --- | --- |
-| Desde cero | LeNet, LeNet+BN, VGG-11, VGG-11+BN | SGD, momentum 0.9 | 0.01 | 20 |
-| Control LR alto | Las mismas cuatro | SGD, momentum 0.9 | 0.1 | 20 |
-| ResNet-18 | Solo FC | Adam | 0.001 | 15 |
-| ResNet-18 | layer3, layer4 y FC | Adam | 0.0001 | 15 |
-| ResNet-18 | Todas las capas | Adam | 0.00001 | 15 |
+| Desde cero | LeNet, LeNet+BN, VGG-11, VGG-11+BN | SGD, momentum 0.9 | 0.01 | 10 |
+| Control LR alto | LeNet y LeNet+BN | SGD, momentum 0.9 | 0.1 | 10 |
+| ResNet-18 | Solo FC | Adam | 0.001 | 5 |
+| ResNet-18 | layer3, layer4 y FC | Adam | 0.0001 | 5 |
+| ResNet-18 | Todas las capas | Adam | 0.00001 | 5 |
+
+Total: **9 experimentos y 75 épocas** (4×10 + 2×10 + 3×5).
 
 Común: semilla 42, batch 64, weight decay 0.0001. Configuración en
 `DEFAULT_SETTINGS` de `src/train.py`. LeNet conserva dos conv-pool y tres FC, tanh y average pool.
@@ -102,7 +104,7 @@ memoria. BN se inserta después de cada conv. El bucle de entrenamiento es propi
 Para los pares ±BN se mantienen pesos iniciales compartidos, split, orden de lotes,
 aumentos y presupuesto. Sin scheduler, early stopping ni clipping. La convergencia se
 define como primera época con **accuracy de validación ≥0.80**; vacío significa no
-alcanzado. LR alta se prueba con/sin BN en ambas arquitecturas. `unstable` indica
+alcanzado. LR alta se prueba solo en LeNet con/sin BN. `unstable` indica
 NaN/Inf; las oscilaciones finitas se estudian en las curvas.
 
 En transferencia también se congelan las estadísticas BN. Ajuste parcial congela stem,
@@ -128,7 +130,7 @@ python -m src.train --group transfer
 python -m src.train --export-only --update-readme
 ```
 
-`--group all` ejecuta los once experimentos. `--device cpu/cuda` fija dispositivo;
+`--group all` ejecuta los nueve experimentos. `--device cpu/cuda` fija dispositivo;
 por defecto es automático. `--output` permite otra carpeta. No se reutilizan resultados
 si cambia código, configuración o manifest. Las corridas completadas se omiten; una
 corrida interrumpida **reinicia desde su semilla**, sin reanudación exacta a mitad.
@@ -266,8 +268,6 @@ Fuente: `tables/scratch.csv`. Aclarar si accuracy es proporción o porcentaje.
 | LeNet | Sí | 0.1 | [ ] | [ ] | [ ] |
 | VGG | No | 0.01 | [ ] | [ ] | [ ] |
 | VGG | Sí | 0.01 | [ ] | [ ] | [ ] |
-| VGG | No | 0.1 | [ ] | [ ] | [ ] |
-| VGG | Sí | 0.1 | [ ] | [ ] | [ ] |
 
 Fuentes: `scratch.csv`, `high_lr.csv`. Distinguir NaN/Inf, oscilación finita y falta
 de convergencia. **Figura 2:** [curvas train/val ±BN, LR base y alta].

@@ -1,0 +1,14 @@
+{
+  "python": "3.14.5",
+  "torch": "2.14.1+cu130",
+  "torchvision": "0.29.1+cu130",
+  "device": "cpu",
+  "hardware": "x86_64",
+  "classes": [
+    "EOSINOPHIL",
+    "LYMPHOCYTE",
+    "MONOCYTE",
+    "NEUTROPHIL"
+  ],
+  "data_root": "/home/diegomucha/me/programming/projects/PC3_Deep_Learning/data/raw/images"
+}

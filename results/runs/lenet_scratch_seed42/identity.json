@@ -1,0 +1,21 @@
+{
+  "config": {
+    "seed": 42,
+    "batch_size": 64,
+    "num_workers": 2,
+    "weight_decay": 0.0001,
+    "augmentation": true,
+    "name": "lenet_scratch_seed42",
+    "architecture": "lenet",
+    "batch_norm": false,
+    "strategy": null,
+    "group": "scratch",
+    "lr": 0.01,
+    "optimizer": "sgd",
+    "momentum": 0.9,
+    "epochs": 10,
+    "size": 64
+  },
+  "manifest_sha256": "5b4df99e6acf99ac3accc8e4b2760d723bce435bd56cc604eeff9c8afdababe4",
+  "source_sha256": "4929cbaec2cc9d7a39b3cec77f16184561b08da231fb67cdc9398332516587a2"
+}

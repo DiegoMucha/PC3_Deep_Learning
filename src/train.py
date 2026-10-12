@@ -27,8 +27,8 @@ DEFAULT_SETTINGS = {'seed': 42,
  'validation_fraction': 0.2,
  'batch_size': 64,
  'num_workers': 2,
- 'scratch_epochs': 20,
- 'transfer_epochs': 15,
+ 'scratch_epochs': 10,
+ 'transfer_epochs': 5,
  'scratch_lr': 0.01,
  'high_lr': 0.1,
  'momentum': 0.9,
@@ -40,13 +40,14 @@ DEFAULT_SETTINGS = {'seed': 42,
 
 
 def experiment_plan(settings, group="all"):
-    """Cuatro modelos base, cuatro controles LR×10 y tres estrategias de transferencia."""
+    """Cuatro modelos base, dos controles LR×10 de LeNet y tres estrategias de transferencia."""
     if group not in {"all", "scratch", "high_lr", "transfer"}:
         raise ValueError(f"Grupo desconocido: {group}")
     common = {k: settings[k] for k in ("seed", "batch_size", "num_workers", "weight_decay", "augmentation")}
     plan = []
     for experiment_group, lr in (("scratch", settings["scratch_lr"]), ("high_lr", settings["high_lr"])):
-        for architecture in ("lenet", "vgg11"):
+        architectures = ("lenet", "vgg11") if experiment_group == "scratch" else ("lenet",)
+        for architecture in architectures:
             for bn in (False, True):
                 plan.append({**common, "name": f"{architecture}{'_bn' if bn else ''}_{experiment_group}_seed{settings['seed']}",
                              "architecture": architecture, "batch_norm": bn, "strategy": None,
