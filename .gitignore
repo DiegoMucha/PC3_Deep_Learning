@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.DS_Store
+data/raw/
+data/splits/
+*.pt
+*.pth
+kaggle.json
+.env
+results/**/environment.txt
+resultados_colab.zip
+

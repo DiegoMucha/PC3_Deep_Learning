@@ -1,0 +1,17 @@
+# Colab/Python >=3.10. Se conserva el PyTorch de Colab si ya es compatible.
+# Instalar con: uv pip install -r requirements.txt
+torch>=2.2,<3
+torchvision>=0.17,<1
+numpy>=1.26,<3
+pandas>=2.2,<4
+matplotlib>=3.8,<4
+seaborn>=0.13,<1
+scikit-learn>=1.4,<2
+pillow>=10,<13
+tqdm>=4.66,<5
+kagglehub>=0.3,<2
+jupyterlab>=4,<5
+ipykernel>=6,<8
+nbformat>=5.10,<6
+nbclient>=0.10,<1
+
