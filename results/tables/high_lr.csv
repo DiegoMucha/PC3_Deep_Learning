@@ -1,0 +1,1 @@
+name,parameters,trainable_parameters,mean_train_seconds,best_val_accuracy,test_accuracy,test_f1_macro,epoch_to_80_val,status

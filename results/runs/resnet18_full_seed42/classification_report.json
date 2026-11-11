@@ -1,0 +1,39 @@
+{
+  "EOSINOPHIL": {
+    "precision": 0.8246445497630331,
+    "recall": 0.8378812199036918,
+    "f1-score": 0.8312101910828026,
+    "support": 623.0
+  },
+  "LYMPHOCYTE": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 620.0
+  },
+  "MONOCYTE": {
+    "precision": 1.0,
+    "recall": 0.7080645161290322,
+    "f1-score": 0.8290840415486308,
+    "support": 620.0
+  },
+  "NEUTROPHIL": {
+    "precision": 0.680503144654088,
+    "recall": 0.8669871794871795,
+    "f1-score": 0.7625088090204369,
+    "support": 624.0
+  },
+  "accuracy": 0.8532368315239244,
+  "macro avg": {
+    "precision": 0.8762869236042803,
+    "recall": 0.853233228879976,
+    "f1-score": 0.8557007604129675,
+    "support": 2487.0
+  },
+  "weighted avg": {
+    "precision": 0.8759097373407803,
+    "recall": 0.8532368315239244,
+    "f1-score": 0.8555213315775996,
+    "support": 2487.0
+  }
+}

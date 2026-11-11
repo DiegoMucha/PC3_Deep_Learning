@@ -1,0 +1,5 @@
+{
+  "name": "resnet18_partial_seed42",
+  "selection": "Mayor accuracy de validación; desempate por menor pérdida",
+  "all_seven_completed": false
+}
